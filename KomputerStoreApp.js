@@ -175,7 +175,6 @@ function updateBankInformation(list, repayList){
         repayList.innerHTML = '';
     }
     else{
-        console.log('gay');
         recentLoanMsgElement.innerHTML =  'Your recent loan amount: ' + loanDataStructure.loans[loanDataStructure.loans.length - 1] +  ' SEK';
 
         for(var i = 0; i < loanDataStructure.loans.length; i++) {
