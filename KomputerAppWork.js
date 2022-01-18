@@ -1,7 +1,7 @@
 
 
-var list  = document.getElementById('loanList');
-var repayList  = document.getElementById('repayList');
+//var list  = document.getElementById('loanList');
+//var repayList  = document.getElementById('repayList');
 var bankHistoryList  = document.getElementById('bankHistoryList');
 
 let newSaleryAmount = 0.0;

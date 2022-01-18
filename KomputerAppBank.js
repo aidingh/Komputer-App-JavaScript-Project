@@ -1,17 +1,7 @@
 
-var list  = document.getElementById('loanList');
-var repayList  = document.getElementById('repayList');
-var bankHistoryList  = document.getElementById('bankHistoryList');
 var userNameElementGlobal;
 
-let dateObj = new Date();
 
-var recentLoanAmountElement = document.getElementById('recentLoanAmountMsg');
-var recentLoanMsgElement = document.getElementById('lastLoanMsg');  
-
-let currentUserBalanceGlobal;
-
-let totalUserBalanceTimesTwo;
 
 class KomputerAppBank{
     

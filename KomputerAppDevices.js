@@ -1,11 +1,6 @@
 
 let globalComputerJson;
-var computerTitle = document.getElementById('computerCardTitle');
-var komputerSpecList = document.getElementById('specList');  
-var komputerStockAmount = document.getElementById('stockMsg'); 
 
-var list  = document.getElementById('loanList');
-var repayList  = document.getElementById('repayList');
 
 let currentComputerItem;
 
@@ -74,6 +69,5 @@ KomputerAppDevices.prototype.attemptToBuyKomputerListener = function(){
     else{
         alert("Current user balance is to low: Your balance is " + loanDataStructure.currentUserBalance + ' SEK');
     }
-
    }
    
