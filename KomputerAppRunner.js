@@ -21,7 +21,7 @@ var computerTitle = document.getElementById('computerCardTitle');
 var userBalanceElement = document.getElementById('balanceMsg');
 var userNameElement = document.getElementById('bankName'); 
 
-const loanDataStructure = {user:"", currentUserBalance: 0.0, totalLoanAmount:0.0, saleryAmount: 0.0, loans: [], tranfers:[]};
+const loanDataStructure = {user:"", currentUserBalance: 0.0, totalLoanAmount:0.0, loans: [], historyList:[]};
 
 var startServiceObject = new KomputerAppService('https://noroff-komputer-store-api.herokuapp.com/computers');
 let computerJson = startServiceObject.getKomputerData();

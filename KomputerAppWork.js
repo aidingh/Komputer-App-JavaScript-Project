@@ -1,7 +1,7 @@
 
 /**
- * This class is the controller module for everything to do with computer devices. 
- * As it acts like a server response when user changes computer items and attempts to buy a computer item.
+ * This class is the controller module for everything to do with the work panel. 
+ * It handles all the work related interactions made by the client.
  */
 
 let newSaleryAmount = 0.0;
@@ -57,8 +57,10 @@ KomputerAppWork.prototype.updatePayListener = function(){
     payMsg.innerHTML = 'Current salery: ' + newSaleryAmount;
 }
 
+
+//Buggs are spooking here sir 
    KomputerAppWork.prototype.transferSaleryToBankListener = function(){
-        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != undefined){
+        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != null){
 
             let fractionAmount = newSaleryAmount * 0.10;
             newSaleryAmount = newSaleryAmount - fractionAmount;
@@ -66,18 +68,27 @@ KomputerAppWork.prototype.updatePayListener = function(){
             loanDataStructure.totalLoanAmount =  loanDataStructure.totalLoanAmount - fractionAmount;
             loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance + newSaleryAmount;
             loanDataStructure.loans[loanDataStructure.loans.length - 1] = loanDataStructure.loans[loanDataStructure.loans.length - 1] - fractionAmount;
-            loanDataStructure.tranfers.push(newSaleryAmount);
+            
+            let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
+            loanDataStructure.historyList.push(historyObject);
 
             newSaleryAmount = 0;
-            KomputerAppBank.prototype.updateBankInformation(list, repayList);
+            KomputerAppBank.prototype.updateBankInformation();
             KomputerAppWork.prototype.updatePayListener();
 
         }
+        else if(newSaleryAmount == 0){
+            alert("Add work to be able to transfer money to the bank.")
+        }
         else{
             loanDataStructure.currentUserBalance =  loanDataStructure.currentUserBalance + newSaleryAmount;
-            loanDataStructure.tranfers.push(newSaleryAmount);
+            
+            let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
+            loanDataStructure.historyList.push(historyObject);
+            console.log(loanDataStructure.historyList);
+
             newSaleryAmount = 0;
-            KomputerAppBank.prototype.updateBankInformation(list, repayList);
+            KomputerAppBank.prototype.updateBankInformation();
             KomputerAppWork.prototype.updatePayListener();
         }
    }

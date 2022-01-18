@@ -96,7 +96,11 @@ KomputerAppBank.prototype.updateUserBalance = function(newLoanAmount){
         loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance + newLoanAmount;
         loanDataStructure.totalLoanAmount = loanDataStructure.totalLoanAmount + newLoanAmount;
         loanDataStructure.loans.push(newLoanAmount);
-        KomputerAppBank.prototype.updateBankInformation(list, repayList);
+
+        let historyObject = {occurence:"Recent loan: ", amount: newLoanAmount.toString(), date: dateObj.toLocaleString()};
+        loanDataStructure.historyList.push(historyObject);
+
+        KomputerAppBank.prototype.updateBankInformation();
         return true;
     }
 }
@@ -105,12 +109,12 @@ KomputerAppBank.prototype.updateUserBalance = function(newLoanAmount){
  * This function updates the UI-bank information if the requirements are correct.  
  * 
  * HTML documents varibles are instanciated in the KomputerAppRunner.js file
- * @global list, repayList
- * @param {document} list document object refering to the UI-element in the html.file. This list updates the infor in the bank panel.
- * @param {document} repayList document object refering to the UI-element in the html.file. This list updates the infor in the repay panel.
+ * 
+ * @global {document} list document object refering to the UI-element in the html.file. This list updates the infor in the bank panel.
+ * @global {document} repayList document object refering to the UI-element in the html.file. This list updates the infor in the repay panel.
  * @return {void} returns undefined. 
  */
-KomputerAppBank.prototype.updateBankInformation = function(list, repayList){
+KomputerAppBank.prototype.updateBankInformation = function(){
     userNameElementGlobal.innerHTML = 'New balance: ' + loanDataStructure.currentUserBalance + ' SEK';
     recentLoanAmountElement.innerHTML = 'Total loan amount: ' + loanDataStructure.totalLoanAmount +  ' SEK';
     
@@ -118,7 +122,14 @@ KomputerAppBank.prototype.updateBankInformation = function(list, repayList){
         recentLoanMsgElement.innerHTML =  'All loans are now payed back! You can borrow more if you like.';
         list.innerHTML = '';
         repayList.innerHTML = '';
+        
+    }
+    if(loanDataStructure.historyList.length == 0){
         bankHistoryList.innerHTML = 'No current bank information available';
+    }
+    if(loanDataStructure.historyList.length == 8){
+        bankHistoryList.innerHTML = 'We clear bank information when list is full.';
+        loanDataStructure.historyList.length = 0;
     }
     else{
 
@@ -127,8 +138,17 @@ KomputerAppBank.prototype.updateBankInformation = function(list, repayList){
         for(var i = 0; i < loanDataStructure.loans.length; i++) {
             list.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
             repayList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
-            bankHistoryList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
         }
+
+        KomputerAppBank.prototype.printHistoryToUiPanel(loanDataStructure.historyList.length);
+    }
+}
+
+
+KomputerAppBank.prototype.printHistoryToUiPanel = function(length){
+
+    for(var i = 0; i < length; i++) {
+        bankHistoryList.innerHTML = loanDataStructure.historyList.map(i => `<li>${i.occurence + i.amount + '  ' + i.date} </li>`).join('');
     }
 }
 
@@ -166,7 +186,7 @@ KomputerAppBank.prototype.rePayLoanListener  = function(){
         loanDataStructure.currentUserBalance  = loanDataStructure.currentUserBalance - repayValue;
         loanDataStructure.totalLoanAmount = loanDataStructure.totalLoanAmount - repayValue;
         loanDataStructure.loans.pop();
-        KomputerAppBank.prototype.updateBankInformation(list, repayList);
+        KomputerAppBank.prototype.updateBankInformation();
         return;
         
     }
@@ -189,8 +209,7 @@ KomputerAppBank.prototype.rePayLoanListener  = function(){
         loanDataStructure.totalLoanAmount = loanDataStructure.totalLoanAmount - repayValue;
         loanDataStructure.loans[loanDataStructure.loans.length - 1] = loanDataStructure.loans[loanDataStructure.loans.length - 1] - repayValue;
 
-        KomputerAppBank.prototype.updateBankInformation(list, repayList);
-        console.log(loanDataStructure);
+        KomputerAppBank.prototype.updateBankInformation();
     }
     
 }

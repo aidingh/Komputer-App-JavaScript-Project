@@ -1,4 +1,9 @@
 
+/**
+ * This class is the controller module for everything to do with computer devices. 
+ * As it acts like a server response when user changes computer items and attempts to buy a computer item.
+ */
+
 let globalComputerJson;
 let currentComputerItem;
 
@@ -67,7 +72,7 @@ KomputerAppDevices.prototype.attemptToBuyKomputerListener = function(){
 
     if(parseInt(currentComputerItem.stock) > 0 && loanDataStructure.currentUserBalance >= parseInt(currentComputerItem.price)){
         loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance - parseInt(currentComputerItem.price);
-        KomputerAppBank.prototype.updateBankInformation(list, repayList);
+        KomputerAppBank.prototype.updateBankInformation();
         alert("Congrats, you have bought " + currentComputerItem.title + ' for ' + currentComputerItem.price + " SEK");
     }
     else{
