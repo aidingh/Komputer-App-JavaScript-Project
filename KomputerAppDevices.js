@@ -72,6 +72,8 @@ KomputerAppDevices.prototype.attemptToBuyKomputerListener = function(){
 
     if(parseInt(currentComputerItem.stock) > 0 && loanDataStructure.currentUserBalance >= parseInt(currentComputerItem.price)){
         loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance - parseInt(currentComputerItem.price);
+        let historyObject = {occurence:"Recent purchase: ", amount: currentComputerItem.price, date: dateObj.toLocaleString()};
+        loanDataStructure.historyList.push(historyObject);
         KomputerAppBank.prototype.updateBankInformation();
         alert("Congrats, you have bought " + currentComputerItem.title + ' for ' + currentComputerItem.price + " SEK");
     }

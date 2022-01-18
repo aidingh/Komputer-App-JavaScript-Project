@@ -122,7 +122,7 @@ input[type=number] {
         <h6 id="recentLoanAmountMsg"></h6>
         <ul id="loanList"></ul>
         <div class="btn-group">
-          <button style="margin:5px;" type="button" class="btn btn-success" onclick="KomputerAppBank.prototype.getLoanPrompt()">Get a loan</button>
+          <button style="margin:5px;" type="button" class="btn btn-success" onclick="KomputerAppBankPrompt.prototype.getLoanPrompt()">Get a loan</button>
           <button style="margin:5px;" type="button" class="btn btn-danger" onclick="KomputerAppBank.prototype.openRepayForm()">Repay loan</button>
          </div>
       </div>
@@ -178,7 +178,7 @@ input[type=number] {
           </div>
           <div class="column">
             <div class="card">
-              <h2 id="historyBankCardTitle">Bank History</h2>
+              <h2 id="historyBankCardTitle">Transaction History</h2>
               <div class="card">
                 <ul id="bankHistoryList"></ul>
               </div>
@@ -187,6 +187,9 @@ input[type=number] {
         <div class="column">
           <div class="card">
             <h2 id="historyWorkCardTitle">Admin Panel</h2>
+            <label for="label"><b>Increase loan amount: </b></label>
+            <p id="mssg">Default is 2</p>
+            <input id='loanForm' type="number" placeholder="Amount: " name="repay" required>
             <ul id="bankHistoryList"></ul>
         </div>
       </div>
@@ -206,7 +209,7 @@ input[type=number] {
 
           <div class="btn-group">
           <button type="button" class="btn" onclick="KomputerAppBank.prototype.rePayLoanListener()" value="Start">Repay</button>
-          <button type="button" class="btn cancel" value="Stop" onclick="KomputerAppBank.prototype.closeRepayForm()">Cancel</button>
+          <button type="button" class="btn cancel" value="Stop" onclick="KomputerAppBankPrompt.prototype.closeRepayForm()">Cancel</button>
          </div>
       
         </div>
@@ -222,6 +225,7 @@ input[type=number] {
     <script src = "KomputerAppService.js"></script>
     <script src = "KomputerAppBank.js"></script>
     <script src = "KomputerAppWork.js"></script>
+    <script src = "KomputerAppBankPrompt.js"></script>
     <script src = "KomputerAppDevices.js"></script>
     <script src = "KomputerAppRunner.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

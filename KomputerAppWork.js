@@ -52,10 +52,20 @@ KomputerAppWork.prototype.resetPayListener = function(){
     KomputerAppWork.prototype.updatePayListener(); 
 }
 
-
+/**
+ * Updates the current pay salery in the UI.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @return {void} returns undefined. 
+ */
 KomputerAppWork.prototype.updatePayListener = function(){
     payMsg.innerHTML = 'Current salery: ' + newSaleryAmount;
 }
+
+
+
 
 
 //Buggs are spooking here sir 
