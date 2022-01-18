@@ -15,7 +15,6 @@
       font-family: "Be Vietnam Pro", sans-serif;
     }
     
-
 * {
   box-sizing: border-box;
 }
@@ -136,6 +135,7 @@ input[type=number] {
         <h6 id="recentLoanAmountMsg"></h6>
         <ul id="loanList"></ul>
         <div class="btn-group">
+          <button style="margin:5px;" type="button" class="btn btn-danger" onclick="KomputerAppWork.prototype.resetPayListener()">Reset</button>
           <button style="margin:5px;" type="button" onclick="KomputerAppWork.prototype.inscreasePayOnChangeListener()" class="btn btn-primary">Work</button>
           <button style="margin:5px;" type="button" onclick= "KomputerAppWork.prototype.transferSaleryToBankListener() " class="btn btn-warning" onclick="KomputerAppBank.prototype.printer()">Transfer</button>
          </div>

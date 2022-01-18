@@ -9,6 +9,12 @@ class KomputerAppDevices{
     }
 }
 
+/**
+ * Sets the computer data to the HTML elements. HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {string} computers contains the json object containing details about the computers.
+ * @return {void} Does not return anything, but sets the computer data to the HTML elements.
+ */
 KomputerAppDevices.prototype.komputerDataTitleToSelection  = function(computers){
 
     var obj = JSON.parse(computers);
@@ -28,7 +34,14 @@ KomputerAppDevices.prototype.komputerDataTitleToSelection  = function(computers)
     komputerImg.src = this.computerImgUrl + obj[0].image;
 }
 
-
+/**
+ * Sets the computer data to the HTML elements when a change occurs on the client side. Such as changing computer item. 
+ * The global scoped varibles is a list using the build in .find() method. Its a O(n) as its searches in a linear fashion.
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {void} globalComputerJson Function takes no input, but uses the global scoped varible that contains the same computer details.
+ * @return {void} Does not return anything, but sets the computer data to the HTML elements when a changed have occured from the client. Such as changeing the computer item.
+ */
 KomputerAppDevices.prototype.onKomputerSelectListener = function(){
 
     let selectedItem = globalComputerJson.find(x => x.id == select.value);
@@ -42,6 +55,14 @@ KomputerAppDevices.prototype.onKomputerSelectListener = function(){
     computerTitle.innerHTML = selectedItem.title;
 }
 
+/**
+ * When user attempts to buy a computer this function is run. It checks the requiremts needed to buy a computer.
+ * The global scoped varibles is the current item selected buy the user that he/she is attempting to buy.
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {void} currentComputerItem Function takes no input, but uses the global scoped varible that contains current selected computer item.
+ * @return {void} Does not return anything, but alerts the client if the requirements are met when attempting to buy a computer.
+ */
 KomputerAppDevices.prototype.attemptToBuyKomputerListener = function(){
 
     if(parseInt(currentComputerItem.stock) > 0 && loanDataStructure.currentUserBalance >= parseInt(currentComputerItem.price)){

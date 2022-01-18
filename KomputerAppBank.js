@@ -12,6 +12,13 @@ class KomputerAppBank{
     }
 }
 
+/**
+ * Instanciates the HTML elements and loanDataStructure paramets when KomputerAppRunner.js is first run. This function only gets run once.
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {void} loanDataStructure Function takes no input, but sets the initial values for the data structure and HTML elements.
+ * @return {void} Does not return anything. 
+ */
 KomputerAppBank.prototype.initUserBalance = function(){
 
     loanDataStructure.currentUserBalance = this.initBalanceAmount;
@@ -24,9 +31,18 @@ KomputerAppBank.prototype.initUserBalance = function(){
 }
 
 
+
+/**
+ * The infamous prompt. The client specifies its input. But there can only be positive integer values. This code handles thoose cases.
+ * The code also handles specifications made by the project directive. Such as the client cant have more that 2x loans if the initial loan is not payed back.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {void} input Input values specified by the client.
+ * @return {boolean} returns true to exit promt and false to close promt 
+ */
 KomputerAppBank.prototype.getLoanPrompt = function(){
     
-
     if(loanDataStructure.currentUserBalance == 0){
         alert("Current bank balance is " + loanDataStructure.currentUserBalance + " SEK. Transfer money to bank salery to continue");
         return;
@@ -56,7 +72,16 @@ KomputerAppBank.prototype.getLoanPrompt = function(){
     }
 }
 
-
+/**
+ * This functions gets excecuted in the .getLoanPromt() function. It checks the project directives. 
+ * Such as the client cant have more that 2x loans if the initial loan is not payed back. And that the client cant borrow twice the current user balance.
+ * If the requirements are met, the client can take a loan and the UI gets updated.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ *
+ * @param {number} newLoanAmount New loan amount specified by the client.
+ * @return {boolean} returns true if the loan attempt was succesfull and false if not.
+ */
 KomputerAppBank.prototype.updateUserBalance = function(newLoanAmount){
 
     if(newLoanAmount > (loanDataStructure.currentUserBalance)*2){
@@ -74,9 +99,17 @@ KomputerAppBank.prototype.updateUserBalance = function(newLoanAmount){
         KomputerAppBank.prototype.updateBankInformation(list, repayList);
         return true;
     }
-
 }
 
+/**
+ * This function updates the UI-bank information if the requirements are correct.  
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * @global list, repayList
+ * @param {document} list document object refering to the UI-element in the html.file. This list updates the infor in the bank panel.
+ * @param {document} repayList document object refering to the UI-element in the html.file. This list updates the infor in the repay panel.
+ * @return {void} returns undefined. 
+ */
 KomputerAppBank.prototype.updateBankInformation = function(list, repayList){
     userNameElementGlobal.innerHTML = 'New balance: ' + loanDataStructure.currentUserBalance + ' SEK';
     recentLoanAmountElement.innerHTML = 'Total loan amount: ' + loanDataStructure.totalLoanAmount +  ' SEK';
@@ -99,6 +132,11 @@ KomputerAppBank.prototype.updateBankInformation = function(list, repayList){
     }
 }
 
+/**
+ * Opens the repay panel if the conditions are met. 
+ *
+ * @return {void} returns undefined. 
+ */
 KomputerAppBank.prototype.openRepayForm  = function(){
     if(loanDataStructure.currentUserBalance == 0){
         alert("Error: Work and take a loan to repay.");
@@ -107,6 +145,11 @@ KomputerAppBank.prototype.openRepayForm  = function(){
     document.getElementById("myForm").style.display = "block";
 }
 
+/**
+ * Closes the repay panel on demand.
+ *
+ * @return {void} returns undefined. 
+ */
 KomputerAppBank.prototype.closeRepayForm = function(){
     document.getElementById("myForm").style.display = "none";
 }

@@ -1,10 +1,11 @@
 
-
-//var list  = document.getElementById('loanList');
-//var repayList  = document.getElementById('repayList');
-var bankHistoryList  = document.getElementById('bankHistoryList');
+/**
+ * This class is the controller module for everything to do with computer devices. 
+ * As it acts like a server response when user changes computer items and attempts to buy a computer item.
+ */
 
 let newSaleryAmount = 0.0;
+
 class KomputerAppWork{
     
     constructor(){
@@ -12,14 +13,43 @@ class KomputerAppWork{
     }
 }
 
+/**
+ * Instanciate the pay salery. The function only gets run once by the KomputerAppRunner.js file.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} undefined No argument needed as the initial pay salery is set from the constructor.
+ * @return {void} returns undefined. 
+ */
 KomputerAppWork.prototype.intiUserSaleryAmount = function(){
     payMsg.innerHTML = 'Current salery: ' + this.initialPayBalance + ' SEK';
-   }
-   
+}
 
+/**
+ * Increases they pay salery by 100 every time the function gets called. And updates the pay salery in the UI.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} newSaleryAmount No argument needed as the function uses the global varible to increase the pay salery.
+ * @return {void} returns undefined. 
+ */
 KomputerAppWork.prototype.inscreasePayOnChangeListener = function(){
- newSaleryAmount = newSaleryAmount + 100;
- KomputerAppWork.prototype.updatePayListener(); 
+    newSaleryAmount = newSaleryAmount + 100;
+    KomputerAppWork.prototype.updatePayListener(); 
+}
+
+
+/**
+ * Resets the pay salery to zero every time it gets called.
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @return {void} returns undefined. 
+ */
+KomputerAppWork.prototype.resetPayListener = function(){
+    newSaleryAmount = 0;
+    KomputerAppWork.prototype.updatePayListener(); 
 }
 
 
