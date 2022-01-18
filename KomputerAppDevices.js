@@ -35,11 +35,28 @@ KomputerAppDevices.prototype.komputerDataTitleToSelection  = function(computers)
     currentComputerItem = obj[0];
 
     komputerStockAmount.innerHTML = 'Stock amount: ' + obj[0].stock;
-    komputerSpecList.innerHTML = obj[0].specs;
     computerTitle.innerHTML = obj[0].title;
+
+    list.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
+    repayList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
+
+    KomputerAppDevices.prototype.printComputerDataDescToUi(obj[0].specs);
+
     desc.innerHTML = 'Description: ' + obj[0].description;
     komputerPrice.innerHTML = 'Price: '+ obj[0].price + ' SEK';
     komputerImg.src = this.computerImgUrl + obj[0].image;
+}
+
+/**
+ * This function is make to list the computer specs line by line. Instead of a large single message.
+ *
+ * @param {list} computerDescList takes in the list in order to display the computer specs in the UI.
+ * @return {void} undefined
+ */
+KomputerAppDevices.prototype.printComputerDataDescToUi  = function(computerDescList){
+    for(var i = 0; i < computerDescList.length; i++) {
+        komputerSpecList.innerHTML = computerDescList.map(i => `<li>${i} </li>`).join('');
+    }
 }
 
 /**
@@ -51,13 +68,14 @@ KomputerAppDevices.prototype.komputerDataTitleToSelection  = function(computers)
  * @return {void} Does not return anything, but sets the computer data to the HTML elements when a changed have occured from the client. Such as changeing the computer item.
  */
 KomputerAppDevices.prototype.onKomputerSelectListener = function(){
-
     let selectedItem = globalComputerJson.find(x => x.id == select.value);
     currentComputerItem = selectedItem;
 
     komputerImg.src = 'https://noroff-komputer-store-api.herokuapp.com/' + selectedItem.image;
     komputerStockAmount.innerHTML = 'Stock amount: ' + selectedItem.stock
-    komputerSpecList.innerHTML = selectedItem.specs;
+
+    KomputerAppDevices.prototype.printComputerDataDescToUi(selectedItem.specs);
+
     desc.innerHTML = 'Description: ' + selectedItem.description;
     komputerPrice.innerHTML = 'Price: '+ selectedItem.price + ' SEK';
     computerTitle.innerHTML = selectedItem.title;

@@ -32,7 +32,7 @@ KomputerAppBank.prototype.initUserBalance = function(){
     loanDataStructure.user = this.userName;
 
     userBalanceElement.innerHTML = 'Current balance: ' + loanDataStructure.currentUserBalance + ' SEK';
-    bankHistoryList.innerHTML = 'No current bank information available';
+    bankHistoryList.innerHTML = 'No current transaction information available';
     userNameElement.innerHTML = loanDataStructure.user;
 }
 
@@ -56,7 +56,7 @@ KomputerAppBank.prototype.updateBankInformation = function(){
         
     }
     if(loanDataStructure.historyList.length == 0){
-        bankHistoryList.innerHTML = 'No current bank information available';
+        bankHistoryList.innerHTML = 'No current transaction information available';
     }
     if(loanDataStructure.historyList.length == 8){
         bankHistoryList.innerHTML = 'We clear bank information when list is full.';

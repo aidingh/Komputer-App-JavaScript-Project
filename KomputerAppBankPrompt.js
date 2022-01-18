@@ -3,9 +3,14 @@
  * This class handles the cliens input. And checks if its meets the requirements to take a loan. 
  * As the Prompt module needs needs to handle many cases it suited best to have it as a separate module.
  * It has a empty constructor if need to set any values in the future.
+ * This class works like a static function for the KomputerAppBank.js file
  */
 class KomputerAppBankPrompt{
-    
+/**
+ * Object will be empty. This class works like a static function for the KomputerAppBank.js file
+ * @return {KomputerAppDevices}
+ * @constructor
+ */
     constructor(){
     }
 }

@@ -10,6 +10,14 @@
 
     <title>Komputer!</title>
   </head>
+  <!--
+  Style section:
+  Sets style and CSS-functionallity to the UI.
+  The style section lets us define a row and a center tag. With this widgets can be placed like a grid view. 
+  The columns are responsive, as they can adapt to different screen sizes.
+  The style section provides a card class. So widgets can be placed inside a card element and styled
+  The style section also provides a form to pop-up..
+  -->
   <style>
     body {
       font-family: "Be Vietnam Pro", sans-serif;
@@ -26,7 +34,7 @@
   padding: 0 10px;
 }
 
-/* Remove extra left and right margins, due to padding */
+/* Remove extra left and right margins*/
 .row {margin: 0 -5px;}
 
 /* Clear floats after the columns */
@@ -52,7 +60,14 @@
   text-align: center;
 }
 
-/* Full-width input fields */
+/* Style the computer desc card*/
+.alignCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: left;
+}
+
+/* Input fields */
 .form-container input[type=number] {
   width: 100%;
   padding: 15px;
@@ -111,9 +126,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
     </style>
+
   <body>
     <h2 class= 'display-1' style = "text-align: center;" id="header1">Komputer store</h2>
-
     <div class="row">
     <div class="column">
       <div class="card">
@@ -123,7 +138,7 @@ input[type=number] {
         <ul id="loanList"></ul>
         <div class="btn-group">
           <button style="margin:5px;" type="button" class="btn btn-success" onclick="KomputerAppBankPrompt.prototype.getLoanPrompt()">Get a loan</button>
-          <button style="margin:5px;" type="button" class="btn btn-danger" onclick="KomputerAppBank.prototype.openRepayForm()">Repay loan</button>
+          <button style="margin:5px;" type="button" class="btn btn-danger" onclick="KomputerAppBankPrompt.prototype.openRepayForm()">Repay loan</button>
          </div>
       </div>
     </div>
@@ -171,9 +186,9 @@ input[type=number] {
         <div class="column">
           <div class="card">
             <h2 id="computerCardTitle"></h2>
-            <div class="card">
-              <ul id="specList"></ul>
-            </div>
+
+              <ul id="specList" style = "text-align: left;"></ul>
+
           </div>
           </div>
           <div class="column">
