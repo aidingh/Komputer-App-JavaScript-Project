@@ -1,8 +1,6 @@
 
 var userNameElementGlobal;
 
-
-
 class KomputerAppBank{
     
     constructor(userName, initBalanceAmount, loanDataStructure, initialTotalLoanAmount){
@@ -10,10 +8,7 @@ class KomputerAppBank{
         this.initBalanceAmount = initBalanceAmount;
         this.initialTotalLoanAmount = initialTotalLoanAmount;
         this.loanDataStructure = loanDataStructure;
-
-        this.userBalanceElement = document.getElementById('balanceMsg');
-        this.userNameElement = document.getElementById('bankName'); 
-        userNameElementGlobal = this.userBalanceElement;
+        userNameElementGlobal = userBalanceElement;
     }
 }
 
@@ -23,9 +18,9 @@ KomputerAppBank.prototype.initUserBalance = function(){
     loanDataStructure.totalLoanAmount = this.initialTotalLoanAmount;
     loanDataStructure.user = this.userName;
 
-    this.userBalanceElement.innerHTML = 'Current balance: ' + loanDataStructure.currentUserBalance + ' SEK';
+    userBalanceElement.innerHTML = 'Current balance: ' + loanDataStructure.currentUserBalance + ' SEK';
     bankHistoryList.innerHTML = 'No current bank information available';
-    this.userNameElement.innerHTML = loanDataStructure.user;
+    userNameElement.innerHTML = loanDataStructure.user;
 }
 
 

@@ -10,7 +10,16 @@ var komputerSpecList = document.getElementById('specList');
 var komputerStockAmount = document.getElementById('stockMsg'); 
 
 var recentLoanAmountElement = document.getElementById('recentLoanAmountMsg');
-var recentLoanMsgElement = document.getElementById('lastLoanMsg');  
+var recentLoanMsgElement = document.getElementById('lastLoanMsg');
+
+var select = document.getElementById("selectNumber")
+var desc = document.getElementById('descMsg');
+var komputerPrice = document.getElementById('priceMsg');
+var komputerImg = document.getElementById('komputerImg');   
+var computerTitle = document.getElementById('computerCardTitle');  
+
+var userBalanceElement = document.getElementById('balanceMsg');
+var userNameElement = document.getElementById('bankName'); 
 
 const loanDataStructure = {user:"", currentUserBalance: 0.0, totalLoanAmount:0.0, saleryAmount: 0.0, loans: [], tranfers:[]};
 
