@@ -1,7 +1,12 @@
-
+/**
+ * This class instantiates all the variables used in a global scope by the classes for this Komputer Store Application.
+ * This class instantiates document objects used in a global scope.
+ * This class also instantiates the objects needed to run the application.
+ * This class acts like a main function for the application.
+ */
 document.getElementById("myForm").style.display = "none";
 let dateObj = new Date();
-var list  = document.getElementById('loanList');
+var loanList  = document.getElementById('loanList');
 var repayList  = document.getElementById('repayList');
 var bankHistoryList  = document.getElementById('bankHistoryList');
 
@@ -12,7 +17,7 @@ var komputerStockAmount = document.getElementById('stockMsg');
 var recentLoanAmountElement = document.getElementById('recentLoanAmountMsg');
 var recentLoanMsgElement = document.getElementById('lastLoanMsg');
 
-var select = document.getElementById("selectNumber")
+var select = document.getElementById("selectDevice")
 var desc = document.getElementById('descMsg');
 var komputerPrice = document.getElementById('priceMsg');
 var komputerImg = document.getElementById('komputerImg');   

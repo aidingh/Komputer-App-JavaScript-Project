@@ -126,7 +126,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
     </style>
-
   <body>
     <h2 class= 'display-1' style = "text-align: center;" id="header1">Komputer store</h2>
     <div class="row">
@@ -159,7 +158,7 @@ input[type=number] {
       <div class="column">
         <div class="card">
           <h2 id="laptopTitle">Laptops</h2>
-          <select id="selectNumber" onchange="KomputerAppDevices.prototype.onKomputerSelectListener()"></select>
+          <select id="selectDevice" onchange="KomputerAppDevices.prototype.onKomputerSelectListener()"></select>
           <div class="card" style="margin:9px;" style="border-color:black;">
           <h5 id="descMsg"></h5>
         </div>
@@ -186,9 +185,7 @@ input[type=number] {
         <div class="column">
           <div class="card">
             <h2 id="computerCardTitle"></h2>
-
               <ul id="specList" style = "text-align: left;"></ul>
-
           </div>
           </div>
           <div class="column">

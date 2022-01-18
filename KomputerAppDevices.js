@@ -37,7 +37,7 @@ KomputerAppDevices.prototype.komputerDataTitleToSelection  = function(computers)
     komputerStockAmount.innerHTML = 'Stock amount: ' + obj[0].stock;
     computerTitle.innerHTML = obj[0].title;
 
-    list.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
+    loanList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
     repayList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
 
     KomputerAppDevices.prototype.printComputerDataDescToUi(obj[0].specs);
@@ -83,6 +83,7 @@ KomputerAppDevices.prototype.onKomputerSelectListener = function(){
 
 /**
  * When user attempts to buy a computer this function is run. It checks the requiremts needed to buy a computer.
+ * ATTENTION: the stock amount does not decrease when the client attempts to buy a computer! This is something that can be implemented later. And is out of the project scope.
  * The global scoped varibles is the current item selected buy the user that he/she is attempting to buy.
  * HTML documents varibles are instanciated in the KomputerAppRunner.js file
  *

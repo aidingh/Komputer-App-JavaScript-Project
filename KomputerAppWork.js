@@ -76,7 +76,7 @@ KomputerAppWork.prototype.updatePayListener = function(){
  * @return {void} returns undefined. 
  */
    KomputerAppWork.prototype.transferSaleryToBankListener = function(){
-        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != null){
+        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != undefined){
 
             let fractionAmount = newSaleryAmount * 0.10;
             newSaleryAmount = newSaleryAmount - fractionAmount;
@@ -84,6 +84,10 @@ KomputerAppWork.prototype.updatePayListener = function(){
             loanDataStructure.totalLoanAmount =  loanDataStructure.totalLoanAmount - fractionAmount;
             loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance + newSaleryAmount;
             loanDataStructure.loans[loanDataStructure.loans.length - 1] = loanDataStructure.loans[loanDataStructure.loans.length - 1] - fractionAmount;
+            if(loanDataStructure.loans[loanDataStructure.loans.length - 1]  == 0){
+                loanDataStructure.loans.pop();
+                KomputerAppBank.prototype.updateBankInformation();
+            }
             
             let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
             loanDataStructure.historyList.push(historyObject);

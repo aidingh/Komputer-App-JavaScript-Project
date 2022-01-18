@@ -51,7 +51,7 @@ KomputerAppBank.prototype.updateBankInformation = function(){
     
     if(loanDataStructure.loans.length == 0){
         recentLoanMsgElement.innerHTML =  'All loans are now payed back! You can borrow more if you like.';
-        list.innerHTML = '';
+        loanList.innerHTML = '';
         repayList.innerHTML = '';
         
     }
@@ -67,7 +67,7 @@ KomputerAppBank.prototype.updateBankInformation = function(){
         recentLoanMsgElement.innerHTML =  'Your recent loan amount: ' + loanDataStructure.loans[loanDataStructure.loans.length - 1] +  ' SEK';
 
         for(var i = 0; i < loanDataStructure.loans.length; i++) {
-            list.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
+            loanList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
             repayList.innerHTML = loanDataStructure.loans.map(i => `<li>${'Recent loans: ' + i + ' SEK ' + '  ' + dateObj.toLocaleString()} </li>`).join('');
         }
 
@@ -118,7 +118,7 @@ KomputerAppBank.prototype.rePayLoanListener  = function(){
     }
     else if(restOfRepay  < 0){
 
-        recentLoanMsgElement.innerHTML =  'ERROR: Repay amount is to large. Please enter the value: ' + loanDataStructure.totalLoanAmount;
+        recentLoanMsgElement.innerHTML =  'ERROR: Repay amount is to large. Please enter the value: ' + loanDataStructure.loans[loanDataStructure.loans.length - 1];
         return;
     }
     else if(loanDataStructure.totalLoanAmount == 0){
