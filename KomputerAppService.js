@@ -4,7 +4,10 @@
  */
 
 class KomputerAppService{
-    
+/**
+ * @return {KomputerAppService}
+ * @constructor
+ */
     constructor(serviceURL){
         this.serviceURL = serviceURL;
         this.deviceObject = new KomputerAppDevices();

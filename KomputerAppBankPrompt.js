@@ -1,6 +1,4 @@
 
-
-
 /**
  * This class handles the cliens input. And checks if its meets the requirements to take a loan. 
  * As the Prompt module needs needs to handle many cases it suited best to have it as a separate module.
@@ -83,4 +81,26 @@ class KomputerAppBankPrompt{
         KomputerAppBank.prototype.updateBankInformation();
         return true;
     }
+}
+
+/**
+ * Opens the repay panel if the conditions are met. 
+ *
+ * @return {void} returns undefined. 
+ */
+ KomputerAppBankPrompt.prototype.openRepayForm  = function(){
+    if(loanDataStructure.currentUserBalance == 0){
+        alert("Error: Work and take a loan to repay.");
+        return;
+    }
+    document.getElementById("myForm").style.display = "block";
+}
+
+/**
+ * Closes the repay panel on demand.
+ *
+ * @return {void} returns undefined. 
+ */
+ KomputerAppBankPrompt.prototype.closeRepayForm = function(){
+    document.getElementById("myForm").style.display = "none";
 }

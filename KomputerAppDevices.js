@@ -8,7 +8,10 @@ let globalComputerJson;
 let currentComputerItem;
 
 class KomputerAppDevices{
-
+/**
+ * @return {KomputerAppDevices}
+ * @constructor
+ */
     constructor(){
         this.computerImgUrl = 'https://noroff-komputer-store-api.herokuapp.com/';
     }

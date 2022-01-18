@@ -7,7 +7,10 @@
 let newSaleryAmount = 0.0;
 
 class KomputerAppWork{
-    
+/**
+ * @return {KomputerAppWork}
+ * @constructor
+ */
     constructor(){
         this.initialPayBalance = 0.0;
     }
@@ -38,7 +41,6 @@ KomputerAppWork.prototype.inscreasePayOnChangeListener = function(){
     KomputerAppWork.prototype.updatePayListener(); 
 }
 
-
 /**
  * Resets the pay salery to zero every time it gets called.
  * 
@@ -64,11 +66,15 @@ KomputerAppWork.prototype.updatePayListener = function(){
     payMsg.innerHTML = 'Current salery: ' + newSaleryAmount;
 }
 
-
-
-
-
-//Buggs are spooking here sir 
+/**
+ * Heavy duty function. This function transfers money to the bank salery and updates it for the client UI.
+ * If the client has a initial loan, then 10% of the salery must first be deducted and transfered to the outstanding loan amount.
+ *  
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @return {void} returns undefined. 
+ */
    KomputerAppWork.prototype.transferSaleryToBankListener = function(){
         if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != null){
 

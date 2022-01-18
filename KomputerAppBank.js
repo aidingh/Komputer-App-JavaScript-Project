@@ -1,8 +1,14 @@
-
+/**
+ * This class is the controller module for everything to do with the bank and repay panel. 
+ * It handles all the bank and repay related interactions made by the client.
+ */
 var userNameElementGlobal;
 
 class KomputerAppBank{
-    
+/**
+ * @return {KomputerAppBank}
+ * @constructor
+ */
     constructor(userName, initBalanceAmount, loanDataStructure, initialTotalLoanAmount){
         this.userName = userName;
         this.initBalanceAmount = initBalanceAmount;
@@ -29,10 +35,6 @@ KomputerAppBank.prototype.initUserBalance = function(){
     bankHistoryList.innerHTML = 'No current bank information available';
     userNameElement.innerHTML = loanDataStructure.user;
 }
-
-
-
-
 
 /**
  * This function updates the UI-bank information if the requirements are correct.  
@@ -73,7 +75,14 @@ KomputerAppBank.prototype.updateBankInformation = function(){
     }
 }
 
-
+/**
+ * Updates the transaction history panel at the client side.  
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {number} length the n-amount to iterate the transaction history list.
+ * @return {void} returns undefined. 
+ */
 KomputerAppBank.prototype.printHistoryToUiPanel = function(length){
 
     for(var i = 0; i < length; i++) {
@@ -82,28 +91,16 @@ KomputerAppBank.prototype.printHistoryToUiPanel = function(length){
 }
 
 /**
- * Opens the repay panel if the conditions are met. 
- *
+ * This function makes the repay-form to pop-up for the client.  
+ * This function handles input value entered by the client.
+ * This function also makes sure the clint must have paid his initial loan to be able to take a new one.
+ * The KomputerAppBankPrompt may be combined with this function. If there is time it good to do. As they both handle user input. 
+ * 
+ * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * 
+ * @param {void} undefined No param needed as the input from the form is only a reached in this function with its HTML element.
  * @return {void} returns undefined. 
  */
-KomputerAppBank.prototype.openRepayForm  = function(){
-    if(loanDataStructure.currentUserBalance == 0){
-        alert("Error: Work and take a loan to repay.");
-        return;
-    }
-    document.getElementById("myForm").style.display = "block";
-}
-
-/**
- * Closes the repay panel on demand.
- *
- * @return {void} returns undefined. 
- */
-KomputerAppBank.prototype.closeRepayForm = function(){
-    document.getElementById("myForm").style.display = "none";
-}
-
-
 KomputerAppBank.prototype.rePayLoanListener  = function(){
     
     var repayValue = document.getElementById("form").value;
