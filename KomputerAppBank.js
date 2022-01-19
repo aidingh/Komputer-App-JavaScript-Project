@@ -50,7 +50,7 @@ KomputerAppBank.prototype.updateBankInformation = function(){
     recentLoanAmountElement.innerHTML = 'Total loan amount: ' + loanDataStructure.totalLoanAmount +  ' SEK';
     
     if(loanDataStructure.loans.length == 0){
-        recentLoanMsgElement.innerHTML =  'No Current loans to repay';
+        recentLoanMsgElement.innerHTML =  'No Current loans to repay'; 
         loanList.innerHTML = '';
         repayList.innerHTML = '';
     }
