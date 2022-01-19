@@ -4,7 +4,7 @@
  * This class also instantiates the objects needed to run the application.
  * This class acts like a main function for the application.
  */
-document.getElementById("myForm").style.display = "none";
+
 let dateObj = new Date();
 var loanList  = document.getElementById('loanList');
 var repayList  = document.getElementById('repayList');

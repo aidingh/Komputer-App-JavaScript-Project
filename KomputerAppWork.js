@@ -67,16 +67,16 @@ KomputerAppWork.prototype.updatePayListener = function(){
 }
 
 /**
- * Heavy duty function. This function transfers money to the bank salery and updates it for the client UI.
+ * Heavy duty function! This function transfers money to the bank salery and updates it for the client UI.
  * If the client has a initial loan, then 10% of the salery must first be deducted and transfered to the outstanding loan amount.
- *  
+ * This code is lage and should be optimized when possible. Its kinda messy i know.
  * HTML documents varibles are instanciated in the KomputerAppRunner.js file
  * 
  * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
  * @return {void} returns undefined. 
  */
    KomputerAppWork.prototype.transferSaleryToBankListener = function(){
-        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != undefined){
+        if(newSaleryAmount > 0 && loanDataStructure.loans[loanDataStructure.loans.length - 1] != undefined && loanDataStructure.totalLoanAmount != 0){
 
             let fractionAmount = newSaleryAmount * 0.10;
             newSaleryAmount = newSaleryAmount - fractionAmount;
@@ -84,28 +84,38 @@ KomputerAppWork.prototype.updatePayListener = function(){
             loanDataStructure.totalLoanAmount =  loanDataStructure.totalLoanAmount - fractionAmount;
             loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance + newSaleryAmount;
             loanDataStructure.loans[loanDataStructure.loans.length - 1] = loanDataStructure.loans[loanDataStructure.loans.length - 1] - fractionAmount;
-            if(loanDataStructure.loans[loanDataStructure.loans.length - 1]  == 0){
+            let restValue  = newSaleryAmount - loanDataStructure.totalLoanAmount;
+
+            if(loanDataStructure.loans[loanDataStructure.loans.length - 1]  <= 0){
+                loanDataStructure.currentUserBalance = loanDataStructure.currentUserBalance + restValue;
+                loanDataStructure.totalLoanAmount =  0;
                 loanDataStructure.loans.pop();
+
+                let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
+                loanDataStructure.historyList.push(historyObject);
+
+                newSaleryAmount = 0;
+
+                KomputerAppWork.prototype.updatePayListener();
                 KomputerAppBank.prototype.updateBankInformation();
+                return
             }
-            
-            let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
-            loanDataStructure.historyList.push(historyObject);
-
-            newSaleryAmount = 0;
-            KomputerAppBank.prototype.updateBankInformation();
-            KomputerAppWork.prototype.updatePayListener();
-
+            else{
+                let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
+                loanDataStructure.historyList.push(historyObject);
+    
+                newSaleryAmount = 0;
+                KomputerAppBank.prototype.updateBankInformation();
+                KomputerAppWork.prototype.updatePayListener();
+            }
         }
         else if(newSaleryAmount == 0){
             alert("Add work to be able to transfer money to the bank.")
         }
         else{
             loanDataStructure.currentUserBalance =  loanDataStructure.currentUserBalance + newSaleryAmount;
-            
             let historyObject = {occurence:"Transfer: ", amount: newSaleryAmount.toString(), date: dateObj.toLocaleString()};
             loanDataStructure.historyList.push(historyObject);
-            console.log(loanDataStructure.historyList);
 
             newSaleryAmount = 0;
             KomputerAppBank.prototype.updateBankInformation();

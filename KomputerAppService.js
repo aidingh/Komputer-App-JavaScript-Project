@@ -30,7 +30,8 @@ KomputerAppService.prototype.getKomputerData = async function(){
         return computerData;
     }
     else{
-        console.log('Something went wrong, could not get computer data');
+        console.log('Could not Http.get data with service url: ' + this.serviceURL);
+        alert();
     }
 }
 

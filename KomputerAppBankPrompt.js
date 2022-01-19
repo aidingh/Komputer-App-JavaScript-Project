@@ -71,7 +71,7 @@ class KomputerAppBankPrompt{
         alert("Loans can not be twice the amount of your current balance");
         return false;
     }
-    else if(loanDataStructure.loans.length == 2){
+    else if(loanDataStructure.loans.length == 1){
         alert("Repay your last loan fully to take take a new loan ");
         return false;
     }
