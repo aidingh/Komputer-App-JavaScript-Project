@@ -1,6 +1,6 @@
 
 /**
- * This class retrives data from the service url and returns it to the KomputerAppRunner.js file to be used in further context.
+ * This class retrieves data from the service url and returns it to the KomputerAppRunner.js file to be used in further context.
  */
 
 class KomputerAppService{
@@ -15,10 +15,10 @@ class KomputerAppService{
 }
 
 /**
- * Makes a http.get request and return a json object contianing details about computers.
+ * Makes a http.get request and return a json object containing details about computers.
  * The computer data is then passed ot KomputerAppDevices.js class function "komputerDataTitleToSelection" to display the data.
  * 
- * @param {void} undefined function takes no param as its survice url is reached from the constructor.
+ * @param {void} undefined function takes no param as its service url is reached from the constructor.
  * @return {string} json object containing details about computers.
  */
 KomputerAppService.prototype.getKomputerData = async function(){

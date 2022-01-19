@@ -17,23 +17,23 @@ class KomputerAppWork{
 }
 
 /**
- * Instanciate the pay salery. The function only gets run once by the KomputerAppRunner.js file.
+ * Instantiate the pay salary. The function only gets run once by the KomputerAppRunner.js file.
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @param {void} undefined No argument needed as the initial pay salery is set from the constructor.
+ * @param {void} undefined No argument needed as the initial pay salary is set from the constructor.
  * @return {void} returns undefined. 
  */
 KomputerAppWork.prototype.intiUserSaleryAmount = function(){
-    payMsg.innerHTML = 'Current salery: ' + this.initialPayBalance + ' SEK';
+    payMsg.innerHTML = 'Current salary: ' + this.initialPayBalance + ' SEK';
 }
 
 /**
- * Increases they pay salery by 100 every time the function gets called. And updates the pay salery in the UI.
+ * Increases they pay salary by 100 every time the function gets called. And updates the pay salary in the UI.
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @param {void} newSaleryAmount No argument needed as the function uses the global varible to increase the pay salery.
+ * @param {void} newSaleryAmount No argument needed as the function uses the global variable to increase the pay salary.
  * @return {void} returns undefined. 
  */
 KomputerAppWork.prototype.inscreasePayOnChangeListener = function(){
@@ -42,11 +42,11 @@ KomputerAppWork.prototype.inscreasePayOnChangeListener = function(){
 }
 
 /**
- * Resets the pay salery to zero every time it gets called.
+ * Resets the pay salary to zero every time it gets called.
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @param {void} newSaleryAmount No argument needed as the function uses the global variable to zero.
  * @return {void} returns undefined. 
  */
 KomputerAppWork.prototype.resetPayListener = function(){
@@ -55,24 +55,24 @@ KomputerAppWork.prototype.resetPayListener = function(){
 }
 
 /**
- * Updates the current pay salery in the UI.
+ * Updates the current pay salary in the UI.
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @param {void} newSaleryAmount No argument needed as the function uses the global variable to zero.
  * @return {void} returns undefined. 
  */
 KomputerAppWork.prototype.updatePayListener = function(){
-    payMsg.innerHTML = 'Current salery: ' + newSaleryAmount;
+    payMsg.innerHTML = 'Current salary: ' + newSaleryAmount;
 }
 
 /**
- * Heavy duty function! This function transfers money to the bank salery and updates it for the client UI.
- * If the client has a initial loan, then 10% of the salery must first be deducted and transfered to the outstanding loan amount.
- * This code is lage and should be optimized when possible. Its kinda messy i know.
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * Heavy duty function! This function transfers money to the bank salary and updates it for the client UI.
+ * If the client has a initial loan, then 10% of the salary must first be deducted and transferred to the outstanding loan amount.
+ * This code is large and should be optimized when possible. Its kinda messy i know.
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @param {void} newSaleryAmount No argument needed as the function uses the global varible to zero.
+ * @param {void} newSaleryAmount No argument needed as the function uses the global variable to zero.
  * @return {void} returns undefined. 
  */
    KomputerAppWork.prototype.transferSaleryToBankListener = function(){

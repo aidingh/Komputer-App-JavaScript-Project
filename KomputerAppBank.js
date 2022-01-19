@@ -19,8 +19,8 @@ class KomputerAppBank{
 }
 
 /**
- * Instanciates the HTML elements and loanDataStructure paramets when KomputerAppRunner.js is first run. This function only gets run once.
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * Instantiates the HTML elements and loanDataStructure parameters when KomputerAppRunner.js is first run. This function only gets run once.
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  *
  * @param {void} loanDataStructure Function takes no input, but sets the initial values for the data structure and HTML elements.
  * @return {void} Does not return anything. 
@@ -38,11 +38,11 @@ KomputerAppBank.prototype.initUserBalance = function(){
 
 /**
  * This function updates the UI-bank information if the requirements are correct.  
- * This code is lage and should be optimized when possible.
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * This code is large and should be optimized when possible.
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
- * @global {document} list document object refering to the UI-element in the html.file. This list updates the infor in the bank panel.
- * @global {document} repayList document object refering to the UI-element in the html.file. This list updates the infor in the repay panel.
+ * @global {document} list document object referring to the UI-element in the html.file. This list updates the information in the bank panel.
+ * @global {document} repayList document object referring to the UI-element in the html.file. This list updates the information in the repay panel.
  * @return {void} returns undefined. 
  */
 KomputerAppBank.prototype.updateBankInformation = function(){
@@ -80,7 +80,7 @@ KomputerAppBank.prototype.updateBankInformation = function(){
 /**
  * Updates the transaction history panel at the client side.  
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
  * @param {number} length the n-amount to iterate the transaction history list.
  * @return {void} returns undefined. 
@@ -96,10 +96,10 @@ KomputerAppBank.prototype.printHistoryToUiPanel = function(length){
  * This function makes the repay-form to pop-up for the client.  
  * This function handles input value entered by the client.
  * This function also makes sure the clint must have paid his initial loan to be able to take a new one.
- * This code is lage and should be optimized when possible.
+ * This code is large and should be optimized when possible.
  * The KomputerAppBankPrompt may be combined with this function. If there is time it good to do. As they both handle user input. 
  * 
- * HTML documents varibles are instanciated in the KomputerAppRunner.js file
+ * HTML documents variables are instantiated in the KomputerAppRunner.js file
  * 
  * @param {void} undefined No param needed as the input from the form is only a reached in this function with its HTML element.
  * @return {void} returns undefined. 
